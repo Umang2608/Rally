@@ -55,6 +55,7 @@ node
         					bat 'mvn test'
 				}
 	    } catch (e) {
+		    bat "@echo off"
 		    bat "git log -1 --oneline > %%f"
 		    bat "set w=%%f"
 		    bat "echo %w%"
