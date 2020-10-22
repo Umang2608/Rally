@@ -10,6 +10,7 @@ def readProperties()
         env.CODE_QUALITY = property.CODE_QUALITY
         env.UNIT_TESTING = property.UNIT_TESTING
         env.CODE_COVERAGE = property.CODE_COVERAGE
+	env.GIT_COMMIT = bat"(script: "git rev-parse HEAD", returnStdout: true).trim()"
 
 }
 
