@@ -41,7 +41,7 @@ node
     stage('Checkout')
     {
         readProperties()
-        checkout([$class: 'GitSCM', branches: [[name: "*/${BRANCH}"]], doGenerateSubmoduleConfigurations: false, extensions:[], submoduleCfg: [], userRemoteConfigs: [[url: "${GIT_SOURCE_URL}"]], env: [[message: "${github.event.head_commit.message}"]]])
+        checkout([$class: 'GitSCM', branches: [[name: "*/${BRANCH}"]], doGenerateSubmoduleConfigurations: false, extensions:[], submoduleCfg: [], userRemoteConfigs: [[url: "${GIT_SOURCE_URL}"]]])
     }
     stage('Initial setup')
     {
@@ -57,7 +57,7 @@ node
 	    } catch (e) {
 		    bat "@echo off | git log -1 --oneline > %%f | set var=%%f | @echo on "
 		    
-		    
+		    bat "git log --oneline -1 ${GIT_COMMIT}"
 		    
 		    bat '''curl -g --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"446239621908\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/Defect/create'''
 		     
