@@ -41,7 +41,7 @@ node
     stage('Checkout')
     {
         readProperties()
-        checkout([$class: 'GitSCM', branches: [[name: "*/${BRANCH}"]], doGenerateSubmoduleConfigurations: false, extensions:[], submoduleCfg: [], userRemoteConfigs: [[url: "${GIT_SOURCE_URL}"]],message: [["${github.event.head_commit.message}"]]])
+        checkout([$class: 'GitSCM', branches: [[name: "*/${BRANCH}"]], doGenerateSubmoduleConfigurations: false, extensions:[], submoduleCfg: [], userRemoteConfigs: [[url: "${GIT_SOURCE_URL}"]], env: [[message: "${github.event.head_commit.message}"]]])
     }
     stage('Initial setup')
     {
