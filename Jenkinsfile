@@ -56,7 +56,7 @@ node
 				}
 	    } catch (e) {
 		    bat "git log -1 --oneline > %%f"
-		    set 'w=%%f'
+		    bat "set w=%%f"
 		    echo '%w%'
 		    
 		    
