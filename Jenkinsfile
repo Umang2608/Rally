@@ -10,7 +10,7 @@ def readProperties()
         env.CODE_QUALITY = property.CODE_QUALITY
         env.UNIT_TESTING = property.UNIT_TESTING
         env.CODE_COVERAGE = property.CODE_COVERAGE
-	env.GIT_COMMIT = bat"(script: "git rev-parse HEAD", returnStdout: true).trim()"
+	
 
 }
 
@@ -57,6 +57,7 @@ node
 				}
 	    } catch (e) {
 		    bat "@echo off | git log -1 --oneline > %%f | set var=%%f | @echo on "
+		    env.GIT_COMMIT = bat"(script: "git rev-parse HEAD", returnStdout: true).trim()"
 		    
 		    bat "git log --oneline -1 ${GIT_COMMIT}"
 		    
