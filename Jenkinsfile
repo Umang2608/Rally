@@ -51,15 +51,21 @@ node
     }
     if (env.UNIT_TESTING == 'True')
     {
-	    parallel{
+	    
 	  
 		    stage('Unit testing') {
-        					bat 'mvn test'
+				     parallel([
+						    hello: {
+							bat 'mvn test'
+						    },
+						    world: {
+							bat 'mvn test'
+						    }
+					])
+										
 				}
-		    stage('Unit testing') {
-        					bat 'mvn test'
-				}
-	    }
+		   
+	    
 	    
     }
 		    
