@@ -51,19 +51,16 @@ node
     }
     if (env.UNIT_TESTING == 'True')
     {
-	    try {
+	    parallel{
+	  
 		    stage('Unit testing') {
         					bat 'mvn test'
 				}
-	    } catch (e) {
-		    bat "@echo off | git log -1 --oneline > %%f | set var=%%f | @echo on "
-		    env.GIT_COMMIT = bat"(script: "git rev-parse HEAD", returnStdout: true).trim()"
-		    
-		    bat "git log --oneline -1 ${GIT_COMMIT}"
-		    
-		    bat '''curl -g --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"446239621908\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/Defect/create'''
-		     
+		    stage('Unit testing') {
+        					bat 'mvn test'
+				}
 	    }
+	    
     }
 		    
 	
