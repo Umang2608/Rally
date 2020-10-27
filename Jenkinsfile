@@ -51,22 +51,17 @@ node
     }
     if (env.UNIT_TESTING == 'True')
     {
-	    echo 'unit test'
-	    def tasks = [:] 
-	    tasks["task_1"] = {
-		    stage('task_1'){
-			    node('opendemo') { 
-				    bat 'mvn test'
-			    }
-		    }
-	    }
-	    tasks["task_2"] = {
-  		    stage ("task_2"){    
-   			   node('opendemo') {  
-				   bat 'mvn test'
-			   }
-		    }
-	    }
+	    
+				     parallel([
+						    hello: {
+							bat 'mvn test'
+						    },
+						    world: {
+							bat 'mvn test'
+						    }
+					])
+										
+				
                            
     
 	    
