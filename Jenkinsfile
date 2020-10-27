@@ -19,7 +19,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'open',
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'manya97/jnlp-slave-dotnet:multi',
+      image: 'registry.access.redhat.com/openshift3/jenkins-slave-maven-rhel7',
       alwaysPullImage: true,
      // resourceRequestCpu: '50m',
      // resourceRequestMemory: '500Mi',
