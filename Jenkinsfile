@@ -23,7 +23,7 @@ podTemplate(cloud:'openshift',label: 'open',
       alwaysPullImage: true,
      // resourceRequestCpu: '50m',
      // resourceRequestMemory: '500Mi',
-      workingDir: '/home/jenkins/agent',
+      workingDir: '/tmp',
 
       envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:'')],
       args: '${computer.jnlpmac} ${computer.name}',
