@@ -53,7 +53,7 @@ node
     {
 	    
 				     parallel([
-						    node('open') {
+						    node("open") {
 							    container('jnlp'){
 							    		stage('unit test'){
 										bat 'mvn test'
