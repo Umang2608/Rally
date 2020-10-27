@@ -53,7 +53,7 @@ node
     {
 	    def tasks = [:] 
 	    tasks["task_1"] = {
-		    stage('Unit testing'){
+		    stage('task_1'){
 			    node('opendemo') { 
 				    bat 'mvn test'
 			    }
