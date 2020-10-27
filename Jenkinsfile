@@ -33,7 +33,7 @@ podTemplate(cloud:'openshift',label: 'docker',
  
 
 
-node('opendemo')
+node
 {
     def MAVEN_HOME = tool "MY_MAVEN"
     def JAVA_HOME = tool "MY_JDK"
@@ -51,20 +51,23 @@ node('opendemo')
     }
     if (env.UNIT_TESTING == 'True')
     {
-	    
-	  
-		    stage('Unit testing') {
-				     parallel([
-						    hello: {
-							bat 'mvn test'
-						    },
-						    world: {
-							bat 'mvn test'
-						    }
-					])
-										
-				}
-		   
+	    def tasks = [:] 
+	    tasks["task_1"] = {
+		    stage('Unit testing'){
+			    node('opendemo') { 
+				    bat 'mvn test'
+			    }
+		    }
+	    }
+	    tasks["task_2"] = {
+  		    stage ("task_2"){    
+   			   node('opendemo') {  
+				   bat 'mvn test'
+			   }
+		    }
+	    }
+                           
+    
 	    
 	    
     }
