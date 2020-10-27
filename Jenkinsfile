@@ -51,6 +51,7 @@ node
     }
     if (env.UNIT_TESTING == 'True')
     {
+	    echo 'unit test'
 	    def tasks = [:] 
 	    tasks["task_1"] = {
 		    stage('task_1'){
