@@ -53,10 +53,10 @@ node
     {
 	    
 				     parallel([
-						    hello: {
+						    hello('opendemo'): {
 							bat 'mvn test'
 						    },
-						    world: {
+						    world('opendemo'): {
 							bat 'mvn test'
 						    }
 					])
