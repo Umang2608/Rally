@@ -54,8 +54,10 @@ node
 	    
 				     parallel([
 						    node('open') {
-							    stage('unit test'){
-									bat 'mvn test'
+							    container('jnlp'){
+							    		stage('unit test'){
+										bat 'mvn test'
+									}
 							    }
 						    },
 						    node('opendemo'){
