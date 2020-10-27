@@ -53,7 +53,7 @@ node
     {
 	    
 				     parallel([
-						    node('opendemo') {
+						    node('docker') {
 							bat 'mvn test'
 						    },
 						    node('opendemo'){
