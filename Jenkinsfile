@@ -15,11 +15,11 @@ def readProperties()
 }
 
 def FAILED_STAGE
-podTemplate(cloud:'openshift',label: 'docker',
+podTemplate(cloud:'openshift',label: 'open',
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'docker:dind',
+      image: 'manya97/jnlp-slave-dotnet:multi',
       alwaysPullImage: true,
      // resourceRequestCpu: '50m',
      // resourceRequestMemory: '500Mi',
@@ -53,7 +53,7 @@ node
     {
 	    
 				     parallel([
-						    node('opendemo') {
+						    node('open') {
 							    stage('unit test'){
 									bat 'mvn test'
 							    }
