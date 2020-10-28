@@ -72,6 +72,9 @@ node
 					   echo 'docker node'
 					   sh 'mvn test'
 				   }
+				   finally {
+                			echo 'docker node over'
+           			   }
 			   }
 			   
 		   },
