@@ -119,7 +119,7 @@ node
     stage('Build and Tag Image for Dev')
    {
 //   		script {
-//        withCredentials([
+//        withCredentialsss([
 //            usernamePassword(credentialsId: 'DockerID', usernameVariable: 'username', passwordVariable: 'password')
 //          ])
 //        {  
