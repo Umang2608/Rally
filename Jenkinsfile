@@ -30,6 +30,20 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
       ttyEnabled: true
     )]){
  
+podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker2',nodeSelector:'node-role.kubernetes.io/compute=true',
+  containers: [
+    containerTemplate(
+      name: 'jnlp',
+      image: 'manya97/jnlp-slave-dotnet:multi',
+      alwaysPullImage: true,
+     // resourceRequestCpu: '50m',
+     // resourceRequestMemory: '500Mi',
+      workingDir: '/tmp',
+
+      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:'')],
+      args: '${computer.jnlpmac} ${computer.name}',
+      ttyEnabled: true
+    )]){
 
 
 node
@@ -59,7 +73,7 @@ node
 									}
 							    
 						    },
-						    node('docker'){
+						    node('docker2'){
 							    stage('unit test'){
 									sh 'mvn test'
 							    }
