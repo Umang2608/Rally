@@ -46,7 +46,7 @@ node
     stage('Initial setup')
     {
        
-        bat 'mvn clean'
+        sh 'mvn clean'
     }
     if (env.UNIT_TESTING == 'True')
     {
@@ -55,13 +55,13 @@ node
 						    node("docker") {
 							    container('jnlp'){
 							    		stage('unit test'){
-										bat 'mvn test'
+										sh 'mvn test'
 									}
 							    }
 						    },
 						    node('opendemo'){
 							    stage('unit test'){
-									bat 'mvn test'
+									sh 'mvn test'
 							    }
 						    }
 					])
