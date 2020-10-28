@@ -53,11 +53,11 @@ node
 	    
 				     parallel([
 						    node("docker") {
-							    container('jnlp'){
+							    
 							    		stage('unit test'){
 										sh 'mvn test'
 									}
-							    }
+							    
 						    },
 						    node('opendemo'){
 							    stage('unit test'){
