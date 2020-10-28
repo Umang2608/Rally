@@ -24,7 +24,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
       workingDir: '/tmp',
-      privileged: true,
+      
       envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:'')],
       args: '${computer.jnlpmac} ${computer.name}',
       ttyEnabled: true
@@ -39,7 +39,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker2',nodeSelector
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
       workingDir: '/tmp',
-      privileged: true,
+      
       envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:'')],
       args: '${computer.jnlpmac} ${computer.name}',
       ttyEnabled: true
