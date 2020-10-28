@@ -59,7 +59,7 @@ node
 									}
 							    
 						    },
-						    node('opendemo'){
+						    node('docker'){
 							    stage('unit test'){
 									sh 'mvn test'
 							    }
