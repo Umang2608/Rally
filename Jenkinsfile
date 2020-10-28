@@ -67,10 +67,13 @@ node
 	    
 				     parallel([
 						    node("docker") {
+							    def MAVEN_HOME = tool "MY_MAVEN"
+							    def JAVA_HOME = tool "MY_JDK"
+							    env.PATH= "${env.PATH}${MAVEN_HOME}\\bin;${JAVA_HOME}\\bin"
 							    
-							    		stage('unit test'){
-										sh 'mvn test'
-									}
+							    stage('unit test'){
+									sh 'mvn test'
+							     }
 							    
 						    },
 						    node('docker2'){
