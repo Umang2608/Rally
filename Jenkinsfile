@@ -64,28 +64,21 @@ node
     }
     if (env.UNIT_TESTING == 'True')
     {
-	    parallel([
-	    	node("docker") {
-
-
-		    	stage('unit test'){
-			    	echo 'docker node'
-			   	 sh 'mvn test'
-		    	 }
-
-	    	},
+	   stage('Test'){
+		   parallel {
+			   stage("Branch 1") {
+				   node('docker'){
+					   steps{
+						   echo 'docker node'
+						   sh 'mvn test'
+					   }
+				   }
+			   }
+		   }
+	   }
 	    
-	    	node('docker2'){
-		    	stage('unit test'){
-					sh 'mvn test'
-		    	}
-	    	}
-	  ])
-	    
-				     
-	    
-	    
-    }
+			   
+     }
 		    
 	
     
