@@ -68,6 +68,7 @@ node
 		   parallel docker: {
 			   
 			   node('docker'){
+				   checkout scm
 				   steps{
 					   echo 'docker node'
 					   sh 'mvn test'
