@@ -64,27 +64,23 @@ node
     }
     if (env.UNIT_TESTING == 'True')
     {
+	    def tasks = [:] 
+	    tasks["task_1"] = {
+		    stage('task_1'){
+			    node('docker') { 
+				    sh 'mvn test'
+			    }
+		    }
+	    }
+	    tasks["task_2"] = {
+  		    stage ("task_2"){    
+   			   node('docker2') {  
+				   sh 'mvn test'
+			   }
+		    }
+	    }
 	    
-				     parallel([
-						    node("docker") {
-							    
-							    
-							    stage('unit test'){
-								    echo 'docker node'
-								    sh 'mvn test'
-							     }
-							    
-						    },
-						    node('docker2'){
-							    stage('unit test'){
-									sh 'mvn test'
-							    }
-						    }
-					])
-										
-				
-                           
-    
+				     
 	    
 	    
     }
