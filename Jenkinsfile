@@ -33,7 +33,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
  
 
 
-node("docker")
+node
 {
     def MAVEN_HOME = tool "MY_MAVEN"
     def JAVA_HOME = tool "MY_JDK"
