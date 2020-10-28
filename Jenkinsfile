@@ -65,15 +65,15 @@ node
     if (env.UNIT_TESTING == 'True')
     {
 	   stage('Test'){
-		   parallel {
-			   stage("Branch 1") {
-				   node('docker'){
-					   steps{
-						   echo 'docker node'
-						   sh 'mvn test'
-					   }
+		   parallel docker: {
+			   
+			   node('docker'){
+				   steps{
+					   echo 'docker node'
+					   sh 'mvn test'
 				   }
 			   }
+			   
 		   }
 	   }
 	    
