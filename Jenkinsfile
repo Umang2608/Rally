@@ -68,7 +68,7 @@ node
 		   parallel docker: {
 			   
 			   node('docker'){
-				   steps{
+				   try{
 					   echo 'docker node'
 					   sh 'mvn test'
 				   }
