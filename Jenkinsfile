@@ -68,18 +68,12 @@ node
 		   parallel docker: {
 			   
 			   node('docker'){
-				   checkout scm
 				   steps{
 					   echo 'docker node'
 					   sh 'mvn test'
 				   }
 			   }
 			   
-		   },
-		   docker2: {
-		       node('docker2'){
-			   echo 'hello'
-		       }
 		   }
 
 	}
