@@ -74,6 +74,11 @@ node
 				   }
 			   }
 			   
+		   },
+		   docker2: {
+		       node('docker2'){
+			   echo 'hello'
+		       }
 		   }
 
 	}
