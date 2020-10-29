@@ -25,7 +25,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
       resourceRequestMemory: '500Mi',
       
       
-      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/usr/share/maven')],
+      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/opt/mvn')],
       args: '${computer.jnlpmac} ${computer.name}',
       ttyEnabled: true
     )]){
@@ -71,7 +71,7 @@ node
 				   try{
 					   
 					   echo 'docker node'
-					   sh 'cd /usr/share/maven && mvn test'
+					   sh 'mvn test'
 					 
 				   }
 				   finally {
