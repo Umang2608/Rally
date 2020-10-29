@@ -25,7 +25,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
       resourceRequestMemory: '500Mi',
       workingDir: '/home/jenkins/agent',
       
-      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:'')],
+      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/etc/maven')],
       args: '${computer.jnlpmac} ${computer.name}',
       ttyEnabled: true
     )]){
@@ -69,7 +69,7 @@ node
 			   
 			   node('docker'){
 				   try{
-					   sh 'whereis maven'
+					   
 					   echo 'docker node'
 					   sh 'mvn test'
 				   }
