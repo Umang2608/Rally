@@ -71,10 +71,10 @@ node
 			   node('docker'){
 				   unstash name:'executable'
 				   try{
-					   sleep 100
+					   sleep 1
 					   
 					   echo 'docker node'
-					   sh 'mvn install'
+					   sh '/bin/mvn install'
 					 
 				   }
 				   finally {
