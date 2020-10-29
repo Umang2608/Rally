@@ -25,7 +25,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
       resourceRequestMemory: '500Mi',
       
       
-      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:'')],
+      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/usr/bin/mvn')],
       
       ttyEnabled: true
     )]){
@@ -74,7 +74,7 @@ node
 					   sleep 1
 					   sh 'pwd'
 					   echo 'docker node'
-					   sh 'cd /home/jenkins/agent/workspace/opendemo && /usr/bin/mvn install'
+					   sh 'cd /home/jenkins/agent/workspace/opendemo && exec /usr/bin/mvn install'
 					 
 				   }
 				   finally {
