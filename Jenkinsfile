@@ -74,7 +74,7 @@ node
 					   unstash name:'executable'
 					   sleep 1000
 					   sh 'pwd'
-					   sh 'chown -R $USER:$USER /home/$USER'
+					   sh 'chown master /usr/share/maven/bin/mvn'
 					   sh 'chmod 777 /usr/share/maven/bin/mvn'
 					   sh '/usr/share/maven/bin mvn install'
 					   
