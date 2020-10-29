@@ -69,7 +69,7 @@ node
 			   
 			   node('docker'){
 				   try{
-					   
+					   sleep 10m
 					   echo 'docker node'
 					   sh 'cd /etc/maven && mvn test'
 					 
