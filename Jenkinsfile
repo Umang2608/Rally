@@ -69,7 +69,7 @@ node
 			   
 			   node('docker'){
 				   try{
-					   
+					   sh 'whereis maven'
 					   echo 'docker node'
 					   sh 'mvn test'
 				   }
