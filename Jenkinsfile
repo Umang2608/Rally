@@ -74,7 +74,7 @@ node
 					   unstash name:'executable'
 					   sleep 1
 					   sh 'pwd'
-					   
+					   sh 'chown -R jenkins:jenkins /opt/mvn/bin/mvn'
 					   sh 'chmod 777 /opt/mvn/bin/mvn'
 					   sh '/opt/mvn mvn install'
 					   
