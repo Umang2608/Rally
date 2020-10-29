@@ -19,7 +19,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'carldurrant/maven-slave-pod',
+      image: 'mlotfy92/maven-slave:v26',
       alwaysPullImage: true,
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
