@@ -69,9 +69,9 @@ node
 			   
 			   node('docker'){
 				   try{
-					   sleep 100
+					   sleep 10
 					   echo 'docker node'
-					   sh 'cd /etc/maven && mvn test'
+					   sh 'mvn test'
 					 
 				   }
 				   finally {
