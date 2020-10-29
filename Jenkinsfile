@@ -72,7 +72,7 @@ node
 				   
 				   try{
 					   unstash name:'executable'
-					   sleep 1000
+					   sleep 1
 					   sh 'pwd'
 					   
 					   sh 'chmod 777 /home/opt/mvn/bin/mvn'
