@@ -74,9 +74,9 @@ node
 					   unstash name:'executable'
 					   sleep 1
 					   sh 'pwd'
+					   sh 'chmod +x maven.sh'
+					   sh './maven.sh'
 					   
-					   echo 'docker node'
-					   sh '/usr/bin/mvn clean install'
 					 
 				   }
 				   finally {
