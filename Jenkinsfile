@@ -19,11 +19,11 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'maven:3.3.9-jdk-8-alpine',
+      image: 'openshift/jenkins-slave-maven-centos7:v3.11',
       alwaysPullImage: true,
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
-      workingDir: '/tmp',
+      
       
       envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'')],
       args: '${computer.jnlpmac} ${computer.name}',
@@ -69,7 +69,7 @@ node
 			   
 			   node('docker'){
 				   try{
-					   sh 'whereis maven'
+					  
 					   echo 'docker node'
 					   sh 'mvn test'
 				   }
