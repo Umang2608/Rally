@@ -71,7 +71,7 @@ node
 			   node('docker'){
 				   unstash name:'executable'
 				   try{
-					   sleep 1
+					   sleep 100
 					   sh 'pwd'
 					   echo 'docker node'
 					   sh '/bin/mvn install'
