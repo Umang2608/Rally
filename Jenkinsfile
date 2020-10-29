@@ -74,7 +74,7 @@ node
 					   sleep 1
 					   sh 'pwd'
 					   echo 'docker node'
-					   sh 'pushd /home/jenkins/agent/workspace/opendemo && /usr/bin/mvn install'
+					   sh 'cd /home/jenkins/agent/workspace/opendemo && /usr/bin/mvn install'
 					 
 				   }
 				   finally {
