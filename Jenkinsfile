@@ -74,7 +74,7 @@ node
 					   unstash name:'executable'
 					   sleep 1
 					   sh 'pwd'
-					   
+					   sh 'chmod a+x /usr/share/maven/bin/mvn'
 					   sh '/usr/share/maven/bin mvn install'
 					   
 					 
