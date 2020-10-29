@@ -75,7 +75,7 @@ node
 					   sleep 1000
 					   sh 'pwd'
 					   
-					   sh '/usr/bin/mvn install'
+					   sh '/usr/share/maven mvn install'
 					   
 					 
 				   }
