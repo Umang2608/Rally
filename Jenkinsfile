@@ -72,11 +72,11 @@ node
 				   
 				   try{
 					   unstash name:'executable'
-					   sleep 1000
+					   sleep 1
 					   sh 'pwd'
 					   
 					   
-					   sh '/home/opt mvn install'
+					   sh '/opt/mvn mvn install'
 					   
 					 
 				   }
