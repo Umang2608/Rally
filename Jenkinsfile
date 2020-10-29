@@ -19,7 +19,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'qautomatron/docker-jnlp-maven-slave:latest',
+      image: 'jenkins/jnlp-agent-maven:latest',
       alwaysPullImage: true,
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
@@ -69,9 +69,10 @@ node
 		   parallel docker: {
 			   
 			   node('docker'){
-				   unstash name:'executable'
+				   
 				   try{
-					   sleep 1
+					   unstash name:'executable'
+					   sleep 100
 					   sh 'pwd'
 					   echo 'docker node'
 					   sh 'cd /home/jenkins/agent/workspace/opendemo && exec /usr/bin/mvn install'
