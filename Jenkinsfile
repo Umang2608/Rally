@@ -19,13 +19,13 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'mguillem/openshift-jenkins-maven-slave:v3.11',
+      image: 'openshift/jenkins-slave-maven-centos7:v3.11',
       alwaysPullImage: true,
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
-      workingDir: '/etc/maven',
+      workingDir: '/tmp',
       
-      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/etc/maven')],
+      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'')],
       args: '${computer.jnlpmac} ${computer.name}',
       ttyEnabled: true
     )]){
