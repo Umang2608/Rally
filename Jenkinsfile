@@ -71,7 +71,7 @@ node
 				   try{
 					   sleep 10
 					   echo 'docker node'
-					   sh 'mvn test'
+					   sh 'pushd /usr/share/maven && mvn test'
 					 
 				   }
 				   finally {
