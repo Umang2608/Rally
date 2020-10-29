@@ -74,7 +74,7 @@ node
 					   unstash name:'executable'
 					   sleep 1
 					   sh 'pwd'
-					   
+					   sh 'maven.sh'
 					   
 					   sh '/home/opt mvn install'
 					   
