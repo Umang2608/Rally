@@ -71,7 +71,7 @@ node
 			   node('docker'){
 				   
 				   try{
-					   unstash name:'executable'
+					   
 					   sleep 1000
 					   sh 'pwd'
 					   echo 'docker node'
