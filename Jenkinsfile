@@ -25,7 +25,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
       resourceRequestMemory: '500Mi',
       
       
-      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/opt/mvn')],
+      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:'')],
       
       ttyEnabled: true
     )]){
