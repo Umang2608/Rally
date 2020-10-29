@@ -19,7 +19,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'jenkins/jnlp-agent-maven:latest',
+      image: 'qautomatron/docker-jnlp-maven-slave:latest',
       alwaysPullImage: true,
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
@@ -74,7 +74,7 @@ node
 					   unstash name:'executable'
 					   sleep 1
 					   sh 'pwd'
-					   sh 'chown -R master:master /usr/share/maven/bin/mvn'
+					   sh 'chown -R jenkins:jenkins /usr/share/maven/bin/mvn'
 					   sh 'chmod 777 /usr/share/maven/bin/mvn'
 					   sh '/usr/share/maven/bin mvn install'
 					   
