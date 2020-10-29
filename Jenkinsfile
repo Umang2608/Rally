@@ -71,7 +71,8 @@ node
 				   try{
 					  
 					   echo 'docker node'
-					   sh 'mvn test'
+					   sh 'cd /etc/maven && mvn test'
+					 
 				   }
 				   finally {
                 			echo 'docker node over'
