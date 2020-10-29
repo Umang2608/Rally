@@ -76,7 +76,7 @@ node
 					   sh 'pwd'
 					   
 					   
-					   sh '/home/opt/mvn/bin mvn install'
+					   sh '/home/opt/mvn mvn install'
 					   
 					 
 				   }
