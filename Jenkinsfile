@@ -69,9 +69,10 @@ node
 		   parallel docker: {
 			   
 			   node('docker'){
+				   unstash name:'executable'
 				   try{
 					   sleep 1
-					   unstash name:'executable'
+					   
 					   echo 'docker node'
 					   sh 'mvn install'
 					 
