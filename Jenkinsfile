@@ -61,6 +61,7 @@ node
     {
        
         sh 'mvn clean'
+	stash name:'executable', includes:'**'
     }
     if (env.UNIT_TESTING == 'True')
     {
@@ -69,7 +70,8 @@ node
 			   
 			   node('docker'){
 				   try{
-					   sleep 1000
+					   sleep 1
+					   unstash name:'executable'
 					   echo 'docker node'
 					   sh 'mvn install'
 					 
