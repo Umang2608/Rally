@@ -71,8 +71,8 @@ node
 			   node('docker'){
 				   
 				   try{
-					   
-					   sleep 1000
+					   unstash name:'executable'
+					   sleep 100
 					   sh 'pwd'
 					   echo 'docker node'
 					   sh 'cd /home/jenkins/agent/workspace/opendemo && exec /usr/bin/mvn install'
