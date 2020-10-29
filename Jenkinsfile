@@ -75,7 +75,7 @@ node
 					   sleep 1
 					   sh 'pwd'
 					   
-					   
+					   sh 'chmod 777 /opt/mvn/bin/mvn'
 					   sh '/opt/mvn mvn install'
 					   
 					 
