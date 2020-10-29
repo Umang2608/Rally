@@ -25,7 +25,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
       resourceRequestMemory: '500Mi',
       
       
-      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/usr/bin/mvn')],
+      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/usr/share/maven')],
       
       ttyEnabled: true
     )]){
@@ -75,7 +75,7 @@ node
 					   sleep 1
 					   sh 'pwd'
 					   
-					   sh '/usr/share/maven mvn install'
+					   sh 'mvn install'
 					   
 					 
 				   }
