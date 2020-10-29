@@ -76,7 +76,7 @@ node
 					   sh 'pwd'
 					   sh 'chown -R jenkins:jenkins /opt/mvn/bin/mvn'
 					   sh 'chmod 777 /opt/mvn/bin/mvn'
-					   sh '/opt/mvn mvn install'
+					   sh '/opt/apache-maven-3.5.4 mvn install'
 					   
 					 
 				   }
