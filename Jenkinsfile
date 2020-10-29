@@ -75,7 +75,7 @@ node
 					   sleep 1
 					   sh 'pwd'
 					   echo 'docker node'
-					   exec '/usr/bin/mvn install'
+					   sh '/usr/bin/mvn install'
 					 
 				   }
 				   finally {
