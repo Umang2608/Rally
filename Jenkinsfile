@@ -19,12 +19,12 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'qautomatron/docker-jnlp-maven-slave:latest',
+      image: 'maven:3.6.3-adoptopenjdk',
       alwaysPullImage: true,
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
       
-      workingDir: '/opt',
+      
       envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/opt/mvn')],
       args: '${computer.jnlpmac} ${computer.name}',
       ttyEnabled: true
