@@ -71,7 +71,7 @@ node
 				   try{
 					   
 					   echo 'docker node'
-					   sh 'mvn test'
+					   sh 'cd /opt/mvn && mvn test'
 					 
 				   }
 				   finally {
