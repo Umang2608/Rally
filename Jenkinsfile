@@ -19,7 +19,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'manya97/jnlp-slave-dotnet:multi',
+      image: 'mguillem/openshift-jenkins-maven-slave:v3.11',
       alwaysPullImage: true,
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
@@ -34,7 +34,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker2',nodeSelector
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'manya97/jnlp-slave-dotnet:multi',
+      image: 'mguillem/openshift-jenkins-maven-slave:v3.11',
       alwaysPullImage: true,
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
