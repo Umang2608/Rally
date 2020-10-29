@@ -74,7 +74,7 @@ node
 					   unstash name:'executable'
 					   sleep 1
 					   sh 'pwd'
-					   sh 'ls'
+					   
 					   echo 'docker node'
 					   sh 'bash mvn install'
 					 
