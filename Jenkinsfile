@@ -69,7 +69,7 @@ node
 			   
 			   node('docker'){
 				   try{
-					   sleep 10
+					   sleep 1000
 					   echo 'docker node'
 					   sh 'mvn install'
 					 
