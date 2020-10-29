@@ -76,7 +76,7 @@ node
 					   sh 'pwd'
 					   
 					   echo 'docker node'
-					   sh 'bash mvn install'
+					   sh '/usr/bin/ mvn install'
 					 
 				   }
 				   finally {
