@@ -72,10 +72,10 @@ node
 				   
 				   try{
 					   unstash name:'executable'
-					   sleep 1000
+					   sleep 1
 					   sh 'pwd'
 					   
-					   sh 'mvn install'
+					   sh '/usr/share/maven/bin mvn install'
 					   
 					 
 				   }
