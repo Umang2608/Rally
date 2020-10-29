@@ -24,7 +24,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
       
-      workingDir: '/tmp',
+      workingDir: '/opt',
       envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/opt/mvn')],
       args: '${computer.jnlpmac} ${computer.name}',
       ttyEnabled: true
