@@ -72,7 +72,7 @@ node
 				   
 				   try{
 					   unstash name:'executable'
-					   sleep 1
+					   sleep 1000
 					   sh 'pwd'
 					   //sh 'chown -R jenkins:jenkins /opt/mvn/bin/mvn'
 					   sh 'su -c "chmod a+x /usr/share/maven/bin/mvn"'
