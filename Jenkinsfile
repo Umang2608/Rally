@@ -74,7 +74,7 @@ node
 					   sh 'echo $PATH'
 					   //sh 'chown -R jenkins:jenkins /opt/mvn/bin/mvn'
 					   //sh 'su -c "chmod a+x /usr/share/maven/bin/mvn"'
-					   sh '/usr/bin/usr/share/maven\bin mvn install'
+					   sh '//usr//bin//usr//share//maven//bin mvn install'
 					   
 					 
 				   }
