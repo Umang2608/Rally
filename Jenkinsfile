@@ -69,8 +69,9 @@ node
 				   
 				   try{
 					   unstash name:'executable'
-					   sleep 1000
+					   sleep 1
 					   sh 'pwd'
+					   sh 'echo $PATH'
 					   //sh 'chown -R jenkins:jenkins /opt/mvn/bin/mvn'
 					   //sh 'su -c "chmod a+x /usr/share/maven/bin/mvn"'
 					   sh 'mvn install'
