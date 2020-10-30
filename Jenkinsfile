@@ -19,7 +19,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'jenkins/jnlp-agent-maven:latest',
+      image: 'openshift/jenkins-slave-maven-centos7',
       alwaysPullImage: true,
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
@@ -76,7 +76,7 @@ node
 					   sh 'pwd'
 					   //sh 'chown -R jenkins:jenkins /opt/mvn/bin/mvn'
 					   //sh 'su -c "chmod a+x /usr/share/maven/bin/mvn"'
-					   sh 'jenkins    ALL = NOPASSWD: /usr/share/maven/bin mvn install'
+					   sh 'mvn install'
 					   
 					 
 				   }
