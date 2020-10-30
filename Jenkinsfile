@@ -19,7 +19,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'qautomatron/docker-jnlp-maven-slave:latest',
+      image: 'jenkins/jnlp-agent-maven:latest',
       alwaysPullImage: true,
       resourceRequestCpu: '50m',
       resourceRequestMemory: '500Mi',
@@ -72,7 +72,7 @@ node
 				   
 				   try{
 					   unstash name:'executable'
-					   sleep 1
+					   sleep 1000
 					   sh 'pwd'
 					   //sh 'chown -R jenkins:jenkins /opt/mvn/bin/mvn'
 					   //sh 'chmod 777 /opt/mvn/bin/mvn'
