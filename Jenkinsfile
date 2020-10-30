@@ -25,7 +25,7 @@ podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:
       resourceRequestMemory: '500Mi',
       
       
-      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:''),envVar(key:'MAVEN_HOME',value:'/usr/share/maven')],
+      envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:'')],
       
       ttyEnabled: true
     )]){
@@ -65,10 +65,7 @@ node
     }
     if (env.UNIT_TESTING == 'True')
     {
-	   stage('Test'){
-		   parallel docker: {
-			   
-			   node('docker'){
+	   node('docker'){
 				   
 				   try{
 					   unstash name:'executable'
@@ -84,15 +81,6 @@ node
                 			echo 'docker node over'
            			   }
 			   }
-			   
-		   },
-		   docker2: {
-		       node('docker2'){
-			   echo 'hello'
-		       }
-		   }
-
-	}
 	    
 			   
      }
