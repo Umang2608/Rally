@@ -75,7 +75,7 @@ node
 					   sleep 1
 					   sh 'pwd'
 					   //sh 'chown -R jenkins:jenkins /opt/mvn/bin/mvn'
-					   //sh 'chmod 777 /opt/mvn/bin/mvn'
+					   sh 'chmod a+x /usr/share/maven/bin/mvn'
 					   sh '/usr/share/maven/bin mvn install'
 					   
 					 
