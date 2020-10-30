@@ -72,11 +72,11 @@ node
 				   
 				   try{
 					   unstash name:'executable'
-					   sleep 1000
+					   sleep 1
 					   sh 'pwd'
 					   //sh 'chown -R jenkins:jenkins /opt/mvn/bin/mvn'
 					   //sh 'chmod 777 /opt/mvn/bin/mvn'
-					   sh '/opt/apache-maven-3.5.4 mvn install'
+					   sh '/usr/share/maven/bin mvn install'
 					   
 					 
 				   }
