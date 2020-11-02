@@ -64,7 +64,7 @@ node
 		    
 		    bat '''curl -g --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"446239621908\\",\\"Description\\": \\"Jenkins URL: http://localhost:9090/job/java/193/console\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/Defect/create'''
 		    
-		    bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Attachment\\":{\\"Content\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248\\",\\"Artifact\\":\"https://rally1.rallydev.com/slm/webservice/v2.0/hierarchicalrequirement/450808293560\\",\\"ContentType\\":\\"application/octet-stream\\",\\"Name\\":\\"someAttachement.txt\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
+		    bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\"Attachment\":{\"Content\":\"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248\",\"Artifact\":\"https://rally1.rallydev.com/slm/webservice/v2.0/defect/450809242792\",\"ContentType\":\"application/octet-stream\",\"Name\":\"Jenkins_URL3.txt\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
 		     
 	    }
     }
