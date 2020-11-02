@@ -52,6 +52,7 @@ node
     {
 	    try {
 		    stage('Unit testing') {
+			    			echo "DEV BRANCH"
         					bat 'mvn test'
 				}
 	    } catch (e) {
