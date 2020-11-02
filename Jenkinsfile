@@ -15,35 +15,22 @@ def readProperties()
 }
 
 def FAILED_STAGE
-podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker',nodeSelector:'node-role.kubernetes.io/compute=true',
+podTemplate(cloud:'openshift',label: 'docker',
   containers: [
     containerTemplate(
       name: 'jnlp',
-      image: 'openshift/jenkins-slave-maven-centos7',
+      image: 'docker:dind',
       alwaysPullImage: true,
-      resourceRequestCpu: '50m',
-      resourceRequestMemory: '500Mi',
-      
-      
-      
-      
-      ttyEnabled: true
-    )]){
- 
-podTemplate(cloud:'openshift',namespace:'opendemo',label: 'docker2',nodeSelector:'node-role.kubernetes.io/compute=true',
-  containers: [
-    containerTemplate(
-      name: 'jnlp',
-      image: 'mguillem/openshift-jenkins-maven-slave:v3.11',
-      alwaysPullImage: true,
-      resourceRequestCpu: '50m',
-      resourceRequestMemory: '500Mi',
-      workingDir: '/tmp',
-      
+     // resourceRequestCpu: '50m',
+     // resourceRequestMemory: '500Mi',
+      workingDir: '/home/jenkins/agent',
+
       envVars: [envVar(key:'http_proxy',value:''),envVar(key:'https_proxy',value:'')],
       args: '${computer.jnlpmac} ${computer.name}',
       ttyEnabled: true
-    )]){
+    )],volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),hostPathVolume(hostPath: '/etc/docker/daemon.json', mountPath: '/etc/docker/daemon.json')] )
+{
+ 
 
 
 node
@@ -60,31 +47,24 @@ node
     stage('Initial setup')
     {
        
-        sh 'mvn clean'
-	stash name:'executable', includes:'**'
+        bat 'mvn clean'
     }
     if (env.UNIT_TESTING == 'True')
     {
-	   node('docker'){
-				   
-				   try{
-					   unstash name:'executable'
-					   sleep 1
-					   sh 'pwd'
-					   sh 'echo $PATH'
-					   //sh 'chown -R jenkins:jenkins /opt/mvn/bin/mvn'
-					   //sh 'su -c "chmod a+x /usr/share/maven/bin/mvn"'
-					   sh '//usr//bin//usr//share//maven//bin mvn install'
-					   
-					 
-				   }
-				   finally {
-                			echo 'docker node over'
-           			   }
-			   }
-	    
-			   
-     }
+	    try {
+		    stage('Unit testing') {
+        					bat 'mvn test'
+				}
+	    } catch (e) {
+		    bat "@echo off | git log -1 --oneline > %%f | set var=%%f | @echo on "
+		    env.GIT_COMMIT = bat"(script: "git rev-parse HEAD", returnStdout: true).trim()"
+		    
+		    bat "git log --oneline -1 ${GIT_COMMIT}"
+		    
+		    bat '''curl -g --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"446239621908\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/Defect/create'''
+		     
+	    }
+    }
 		    
 	
     
@@ -120,7 +100,7 @@ node
     stage('Build and Tag Image for Dev')
    {
 //   		script {
-//        withCredentialsss([
+//        withCredentials([
 //            usernamePassword(credentialsId: 'DockerID', usernameVariable: 'username', passwordVariable: 'password')
 //          ])
 //        {  
@@ -149,5 +129,4 @@ node
 
 		
 
-}
 }
