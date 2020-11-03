@@ -60,7 +60,7 @@ node
 		    //bat "@echo off | git log -1 --oneline > %%f | set var=%%f | @echo on "
 		    //env.GIT_COMMIT = bat"(script: "git rev-parse HEAD", returnStdout: true).trim()"
 		    
-		    bat "git log --oneline -1"
+		    //bat "git log --oneline -1 > %url"
 		    
 		    def response = bat(script: '''curl -g --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"446239621908\\",\\"Description\\": \\"Jenkins URL: http://localhost:9090/job/java/193/console\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/Defect/create''',returnStdout: true).trim()
 		    //echo response
@@ -75,10 +75,11 @@ node
 		    bat "echo ${jsonObj.CreateResult.Object._ref}"
 		    def defecturl = jsonObj.CreateResult.Object._ref
 		    echo defecturl
-		    def url = "https://rally1.rallydev.com/#/detail/userstory/446239621908?fdp=true"
+		    //def url = "https://rally1.rallydev.com/#/detail/userstory/446239621908?fdp=true"
 		    def usno = url.substring(url.lastIndexOf("/")+1,url.indexOf("?"))
 		    echo usno
-		    bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Attachment\\":{\\"Content\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248\\",\\"Artifact\\":"${defecturl}",\\"ContentType\\":\\"application/octet-stream\\",\\"Name\\":\\"Jenkins_URL3.txt\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
+		    def api = '"Attachment":{"Content":"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248","Artifact":"+"${defecturl}"+","ContentType":"application/octet-stream","Name":"Jenkins_URL3.txt"}'
+		    bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{'${api}'}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
 		     
 	    }
     }
