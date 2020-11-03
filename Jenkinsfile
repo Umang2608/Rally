@@ -66,7 +66,7 @@ node
 		    //echo response
 		    echo "index of create res"
 		    def jsonString = response.substring(response.indexOf('CreateResult')-2,response.length())
-		    echo resp
+		    echo jsonString
 		    //def ind = response.indexOf('CreateResult')
 		    //echo ind
 		    
