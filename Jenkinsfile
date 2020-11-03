@@ -74,9 +74,9 @@ node
 		    def jsonObj = readJSON text: jsonString
 		    bat "echo ${jsonObj.CreateResult.Object._ref}"
 		    def var = jsonObj.CreateResult.Object._ref
-		    echo var
+		    echo "message"+var
 		    def url = "https://rally1.rallydev.com/#/detail/userstory/446239621908?fdp=true"
-		    def usno = url.substring(url.lastIndexOf("/"),url.indexOf("?"))
+		    def usno = url.substring(url.lastIndexOf("/")+1,url.indexOf("?"))
 		    echo usno
 		    //bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Attachment\\":{\\"Content\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248\\",\\"Artifact\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/defect/450809242792\\",\\"ContentType\\":\\"application/octet-stream\\",\\"Name\\":\\"Jenkins_URL3.txt\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
 		     
