@@ -65,8 +65,10 @@ node
 		    def response = bat(script: '''curl -g --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"446239621908\\",\\"Description\\": \\"Jenkins URL: http://localhost:9090/job/java/193/console\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/Defect/create''',returnStdout: true).trim()
 		    echo response
 		    echo "index of create res"
-		    def ind = response.indexOf('CreateResult')
-		    echo ind
+		    def resp = response.substring(response.indexOf('CreateResult'),response.length())
+		    echo resp
+		    //def ind = response.indexOf('CreateResult')
+		    //echo ind
 		    
 		    
 		    //def jsonObj = readJSON text: jsonString
