@@ -72,7 +72,7 @@ node
 		    
 		    
 		    def jsonObj = readJSON text: jsonString
-		    echo ${jsonObj.CreateResult.Object._ref}
+		    bat "echo ${jsonObj.CreateResult.Object._ref}"
 		    //bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Attachment\\":{\\"Content\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248\\",\\"Artifact\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/defect/450809242792\\",\\"ContentType\\":\\"application/octet-stream\\",\\"Name\\":\\"Jenkins_URL3.txt\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
 		     
 	    }
