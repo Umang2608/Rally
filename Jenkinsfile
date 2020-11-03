@@ -63,15 +63,16 @@ node
 		    //bat "git log --oneline -1 ${GIT_COMMIT}"
 		    
 		    def response = bat(script: '''curl -g --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"446239621908\\",\\"Description\\": \\"Jenkins URL: http://localhost:9090/job/java/193/console\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/Defect/create''',returnStdout: true).trim()
-		    echo response
+		    //echo response
 		    echo "index of create res"
-		    def resp = response.substring(response.indexOf('CreateResult'),response.length())
+		    def jsonString = response.substring(response.indexOf('CreateResult')-2,response.length())
 		    echo resp
 		    //def ind = response.indexOf('CreateResult')
 		    //echo ind
 		    
 		    
-		    //def jsonObj = readJSON text: jsonString
+		    def jsonObj = readJSON text: jsonString
+		    echo ${jsonObj.CreateResult.Object._ref}
 		    //bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Attachment\\":{\\"Content\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248\\",\\"Artifact\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/defect/450809242792\\",\\"ContentType\\":\\"application/octet-stream\\",\\"Name\\":\\"Jenkins_URL3.txt\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
 		     
 	    }
