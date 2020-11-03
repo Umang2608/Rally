@@ -60,7 +60,7 @@ node
 		    //bat "@echo off | git log -1 --oneline > %%f | set var=%%f | @echo on "
 		    //env.GIT_COMMIT = bat"(script: "git rev-parse HEAD", returnStdout: true).trim()"
 		    
-		    //bat "git log --oneline -1 > %url"
+		    bat "git log --oneline -1"
 		    //def usno = url.substring(url.lastIndexOf("/")+1,url.indexOf("?"))
 		    //echo usno
 		    
