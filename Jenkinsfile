@@ -82,7 +82,7 @@ node
 		    //echo usno
 		    //def api = '"Attachment":{"Content":"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248","Artifact":"+"${defecturl}"+","ContentType":"application/octet-stream","Name":"Jenkins_URL3.txt"}'
 		  //  bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\"\${api}\"}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
-		     bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json"   -d"{\\"Attachment\\":{\\"Content\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248\\",\\"Artifact\\":\\"\\$defecturl\\",\\"ContentType\\":\\"application/octet-stream\\",\\"Name\\":\\"Jenkins_URL3.txt\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
+		     bat """curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json"   -d"{\\"Attachment\\":{\\"Content\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248\\",\\"Artifact\\":\\"\${defecturl}\\",\\"ContentType\\":\\"application/octet-stream\\",\\"Name\\":\\"Jenkins_URL3.txt\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create"""
 		     
 	    }
     }
