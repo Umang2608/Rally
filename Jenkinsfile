@@ -61,6 +61,8 @@ node
 		    //env.GIT_COMMIT = bat"(script: "git rev-parse HEAD", returnStdout: true).trim()"
 		    
 		    //bat "git log --oneline -1 > %url"
+		    //def usno = url.substring(url.lastIndexOf("/")+1,url.indexOf("?"))
+		    //echo usno
 		    
 		    def response = bat(script: '''curl -g --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"446239621908\\",\\"Description\\": \\"Jenkins URL: http://localhost:9090/job/java/193/console\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/Defect/create''',returnStdout: true).trim()
 		    //echo response
@@ -78,8 +80,9 @@ node
 		    //def url = "https://rally1.rallydev.com/#/detail/userstory/446239621908?fdp=true"
 		    //def usno = url.substring(url.lastIndexOf("/")+1,url.indexOf("?"))
 		    //echo usno
-		    def api = '"Attachment":{"Content":"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248","Artifact":"+"${defecturl}"+","ContentType":"application/octet-stream","Name":"Jenkins_URL3.txt"}'
-		    bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\"${api}\"}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
+		    //def api = '"Attachment":{"Content":"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248","Artifact":"+"${defecturl}"+","ContentType":"application/octet-stream","Name":"Jenkins_URL3.txt"}'
+		  //  bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\"\${api}\"}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
+		     bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json"   -d"{\\"Attachment\\":{\\"Content\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248\\",\\"Artifact\\":\\"\${defecturl}\\",\\"ContentType\\":\\"application/octet-stream\\",\\"Name\\":\\"Jenkins_URL3.txt\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
 		     
 	    }
     }
