@@ -57,8 +57,9 @@ node
         					bat 'mvn test'
 				}
 	    } catch (e) {
-		    //bat "@echo off | git log -1 --oneline > %%f | set var=%%f | @echo on "
-		    //env.GIT_COMMIT = bat"(script: "git rev-parse HEAD", returnStdout: true).trim()"
+		    
+		    def jenkins = bat(script: 'env.BUILD_URL',returnStdout: true).trim()
+		    echo jenkins
 		    
 		    def url = bat(script: 'git log --oneline -1',returnStdout: true).trim()
 		    def usno = url.substring(url.lastIndexOf("/")+1,url.indexOf("?"))
