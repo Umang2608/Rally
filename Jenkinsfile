@@ -58,7 +58,7 @@ node
 				}
 	    } catch (e) {
 		    
-		    def jenkins = bat(script: 'env.BUILD_URL',returnStdout: true).trim()
+		    def jenkins = env.BUILD_URL
 		    echo jenkins
 		    
 		    def url = bat(script: 'git log --oneline -1',returnStdout: true).trim()
