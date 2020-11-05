@@ -52,7 +52,7 @@ node
     {
 	    try {
 		    stage('Unit testing') {
-			    			echo "Hello 11132111"
+			    			echo "Hello 111321112"
         					bat 'mvn test'
 				}
 	    } catch (e) {
