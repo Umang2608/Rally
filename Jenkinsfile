@@ -109,6 +109,7 @@ node
         stage('Coverage testing')
         {
            echo 'mvn cobertura:cobertura'
+	   return
         }
     }
     if (env.SECURITY_TESTING == 'True')
@@ -126,7 +127,7 @@ node
         }
     }
 
-    stage('Build and Tag Image for Dev')
+    stage('Package')
    {
 //   		script {
 //        withCredentials([
@@ -134,28 +135,10 @@ node
 //          ])
 //        {  
    		
-	   FAILED_STAGE=env.STAGE_NAME
 	  
-	  node('docker')
-    {
-        
-        container('jnlp')
-        {
-      //   	checkout([$class: 'GitSCM', branches: [[name: "*/${BRANCH}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "${SCR_CREDENTIALS}", url: "${GIT_SOURCE_URL}"]]])
-       //     sh "mvn -s Maven/setting clean install -Djacoco.percentage.instruction=0.01"
-       //      /*sh "cp -r /root/.m2/repository/io/prometheus/jmx/jmx_prometheus_javaagent/0.11.0/* ./" */
-        //    sh "docker login ${DOCKER_REGISTRY} -u registryuser -p Inpk2@admregistry"
-         //   sh "docker build -t ${MS_NAME}:latest ."
-          //  sh 'docker tag ${MS_NAME}:latest ${DOCKER_REGISTRY}/${DOCKER_REPO}/${MS_NAME}:redhatdemo-dev-apps'
-	//		sh 'docker push ${DOCKER_REGISTRY}/${DOCKER_REPO}/${MS_NAME}:redhatdemo-dev-apps'
-	//		sh 'docker rmi -f ${DOCKER_REGISTRY}/${DOCKER_REPO}/${MS_NAME}:redhatdemo-dev-apps'
-	//		sh 'docker rmi -f ${MS_NAME}:latest'
-        }
-    }
-
 }
 }
 
 		
 
-}
+
