@@ -58,7 +58,8 @@ node
 			    			def defid = bat(script: 'git log --oneline -1',returnStdout: true).trim()
 			    			def id = defid.substring(defid.lastIndexOf(" ")+1)
 			    			echo id
-			    			bat """curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\Defect\\":{\\"Name\\":\\"Automated Defect fixed \\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Fixed\\",\\"Requirement\\": \\"446239621908\\", \\"Description\\":\\"Defect state change to fixed\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/defect/${id}"""
+			    			bat """curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\"Defect\":{\"Name\":\"Automated Defect: US2020\",\"Severity\": \"Cosmetic\", \"Priority\": \"Resolve Immediately\", \"State\": \"Fixed\",\"Requirement\": \"446239621908\", \"Description\":\"Hello World\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/defect/${id}"""
+			    			//bat """curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\Defect\\":{\\"Name\\":\\"Automated Defect fixed \\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Fixed\\",\\"Requirement\\": \\"446239621908\\", \\"Description\\":\\"Defect state change to fixed\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/defect/${id}"""
 				}
 	    } catch (e) {
 		    
