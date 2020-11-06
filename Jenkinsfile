@@ -55,6 +55,9 @@ node
 		    stage('Unit testing') {
 			    			
         					bat 'mvn test'
+			    			def defid = bat(script: 'git log --oneline -1',returnStdout: true).trim()
+			    			def id = defid.substring(defid.lastIndexOf(" "))
+			    			echo id
 				}
 	    } catch (e) {
 		    
