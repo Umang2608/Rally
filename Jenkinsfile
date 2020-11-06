@@ -131,7 +131,7 @@ node
    {
 //   		script {
 //        withCredentials([
-//            usernamePassword(credentialsId: 'DockerID', usernameVariable: 'username', passwordVariable: 'password')
+//            usernamePasswordd(credentialsId: 'DockerID', usernameVariable: 'username', passwordVariable: 'password')
 //          ])
 //        {  
    		
