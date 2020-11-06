@@ -10,6 +10,7 @@ def readProperties()
         env.CODE_QUALITY = property.CODE_QUALITY
         env.UNIT_TESTING = property.UNIT_TESTING
         env.CODE_COVERAGE = property.CODE_COVERAGE
+	
 
 }
 
@@ -52,11 +53,39 @@ node
     {
 	    try {
 		    stage('Unit testing') {
-			    			echo "Hello 111321112111"
+			    			
         					bat 'mvn test'
 				}
 	    } catch (e) {
-		    bat '''curl -g --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"446239621908\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/Defect/create'''
+		    
+		    def jenkins = env.BUILD_URL
+		    echo jenkins
+		    
+		    def url = bat(script: 'git log --oneline -1',returnStdout: true).trim()
+		    def usno = url.substring(url.lastIndexOf("/")+1,url.indexOf("?"))
+		    echo usno
+		    
+		    def response = bat(script: """curl -g --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"${usno}\\",\\"Description\\": \\"Jenkins URL: ${jenkins}\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/defect/create""",returnStdout: true).trim()
+		    //def response = bat(script: """curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\\"Defect\\":{\\"Name\\":\\"Automated Defect: US2020\\",\\"Severity\\": \\"Cosmetic\\", \\"Priority\\": \\"Resolve Immediately\\", \\"State\\": \\"Open\\",\\"Requirement\\": \\"${usno}\\", \\"Description\\":\\"Jenkins URL: http://localhost:9090/job/java/193/console\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/Defect/create
+		    //echo response
+		    echo "index of create res"
+		    def jsonString = response.substring(response.indexOf('CreateResult')-2,response.length())
+		    echo jsonString
+		    //def ind = response.indexOf('CreateResult')
+		    //echo ind
+		    
+		    
+		    def jsonObj = readJSON text: jsonString
+		    bat "echo ${jsonObj.CreateResult.Object._ref}"
+		    def defecturl = jsonObj.CreateResult.Object._ref
+		    echo defecturl
+		    //def url = "https://rally1.rallydev.com/#/detail/userstory/446239621908?fdp=true"
+		    //def usno = url.substring(url.lastIndexOf("/")+1,url.indexOf("?"))
+		    //echo usno
+		    //def api = '"Attachment":{"Content":"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/450673452248","Artifact":"+"${defecturl}"+","ContentType":"application/octet-stream","Name":"Jenkins_URL3.txt"}'
+		  //  bat '''curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json" -d"{\"\${api}\"}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create'''
+		     bat """curl --header "zsessionid":"_7cIVFUMTAe5YRxqNYHuc7obb0aBlXM1WYurWU8" -H "Content-Type":"application/json"   -d"{\\"Attachment\\":{\\"Content\\":\\"https://rally1.rallydev.com/slm/webservice/v2.0/attachmentcontent/453078047176\\",\\"Artifact\\":\\"${defecturl}\\",\\"ContentType\\":\\"application/octet-stream\\",\\"Name\\":\\"Jenkins_URL3.txt\\"}}" https://rally1.rallydev.com/slm/webservice/v2.0/attachment/create"""
+		     
 	    }
     }
 		    
