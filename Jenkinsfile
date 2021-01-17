@@ -13,7 +13,7 @@ def readProperties()
 	
 
 }
-
+// hello
 def FAILED_STAGE
 podTemplate(cloud:'openshift',label: 'docker',
   containers: [
